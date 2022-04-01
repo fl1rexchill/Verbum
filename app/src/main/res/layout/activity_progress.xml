@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.Progress">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="413dp"
+        android:layout_height="109dp"
+        android:layout_marginBottom="-40dp"
+        android:src="@drawable/background_lobby"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivSettingsOnProgress"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="-5dp"
+        android:onClick="onClickGoSettings"
+        android:src="@drawable/icon_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageView
+        android:id="@+id/ivTasks"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="-5dp"
+        android:onClick="onClickGoTasks"
+        android:src="@drawable/icon_tasks"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvEveryDayTasks3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Прогресс"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivProgressActive"
+        android:layout_width="80dp"
+        android:layout_height="65dp"
+        android:layout_marginBottom="-5dp"
+        android:src="@drawable/icon_progress_active"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ivSettingsOnProgress"
+        app:layout_constraintStart_toEndOf="@+id/ivTasks" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "526288811114",
+    "project_id": "verbum-verbum",
+    "storage_bucket": "verbum-verbum.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526288811114:android:67e71e7f060c7ebb214613",
+        "android_client_info": {
+          "package_name": "com.flirex.verbum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526288811114-baequ1gl1bmipk4gq7nr1qb9qgjn16o1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.flirex.verbum",
+            "certificate_hash": "db949dd19e46257a746226064a1038370f3691ba"
+          }
+        },
+        {
+          "client_id": "526288811114-5hm28f2ni32ggc6p7vfj40qhm0im9fd4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7n-BRgRuJBi3yNP0cU2T3KJcLhlQoD6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526288811114-5hm28f2ni32ggc6p7vfj40qhm0im9fd4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
