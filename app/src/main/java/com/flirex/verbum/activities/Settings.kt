@@ -31,6 +31,13 @@ class Settings : Activity() {
     private var bnFour2: Button? = null
     private var bnSix2: Button? = null
     private var bnEigth2: Button? = null
+    var scoreCheckWork: String? = ""
+    var wordToLearnProfessionLow: String? = ""
+    var wordToLearnProfessionMiddle: String? = ""
+    var wordToLearnProfessionHigh: String? = ""
+    var learnedWords: String? = ""
+    var wordToLearn:String? = ""
+    var levelCheckWork:String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -116,42 +123,33 @@ class Settings : Activity() {
     fun onClickLow(view: View){
         auth = Firebase.auth
         val currentUser = auth.currentUser
-        if (scoreCheck == 4) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "4",
-                level = "1"
-            )
-            val washingtonRef = db.collection("active").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (scoreCheck == 6) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "6",
-                level = "1"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (scoreCheck == 8) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "8",
-                level = "1"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
+        val db = Firebase.firestore
+        db.collection("users").document(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.d("test", "$document")
+                scoreCheckWork = document.getString("score")
+                wordToLearnProfessionLow = document.getString("wordToLearnProfessionLow")
+                wordToLearnProfessionMiddle = document.getString("wordToLearnProfessionMiddle")
+                wordToLearnProfessionHigh = document.getString("wordToLearnProfessionHigh")
+                learnedWords = document.getString("learnedWords")
+                wordToLearn = document.getString("wordToLearn")
+                val userDoc = com.flirex.verbum.modules.User(
+                    uid = currentUser?.uid,
+                    email = currentUser?.email,
+                    name = currentUser?.displayName,
+                    score = scoreCheckWork.toString(),
+                    level = "1",
+                    wordToLearnProfessionLow = wordToLearnProfessionLow.toString(),
+                    wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
+                    wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
+                    learnedWords = learnedWords.toString(),
+                    wordToLearn = wordToLearn.toString()
+                )
+                val washingtonRef = db.collection("users").document(currentUser!!.uid)
+                washingtonRef
+                    .set(userDoc)
+            }
         levelCheck = 1
         bnLow2?.setVisibility(View.VISIBLE)
         bnLow?.setVisibility(View.GONE)
@@ -161,42 +159,33 @@ class Settings : Activity() {
     fun onClickMiddle(view: View){
         auth = Firebase.auth
         val currentUser = auth.currentUser
-        if (scoreCheck == 4) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "4",
-                level = "2"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (scoreCheck == 6) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "6",
-                level = "2"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (scoreCheck == 8) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "8",
-                level = "2"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
+        val db = Firebase.firestore
+        db.collection("users").document(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.d("test", "$document")
+                scoreCheckWork = document.getString("score")
+                wordToLearnProfessionLow = document.getString("wordToLearnProfessionLow")
+                wordToLearnProfessionMiddle = document.getString("wordToLearnProfessionMiddle")
+                wordToLearnProfessionHigh = document.getString("wordToLearnProfessionHigh")
+                learnedWords = document.getString("learnedWords")
+                wordToLearn = document.getString("wordToLearn")
+                val userDoc = com.flirex.verbum.modules.User(
+                    uid = currentUser?.uid,
+                    email = currentUser?.email,
+                    name = currentUser?.displayName,
+                    score = scoreCheckWork.toString(),
+                    level = "2",
+                    wordToLearnProfessionLow = wordToLearnProfessionLow.toString(),
+                    wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
+                    wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
+                    learnedWords = learnedWords.toString(),
+                    wordToLearn = wordToLearn.toString()
+                )
+                val washingtonRef = db.collection("users").document(currentUser!!.uid)
+                washingtonRef
+                    .set(userDoc)
+            }
         levelCheck = 2
         bnMiddle2?.setVisibility(View.VISIBLE)
         bnMiddle?.setVisibility(View.GONE)
@@ -206,42 +195,33 @@ class Settings : Activity() {
     fun onClickHigh(view: View){
         auth = Firebase.auth
         val currentUser = auth.currentUser
-        if (scoreCheck == 4) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "4",
-                level = "3"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (scoreCheck == 6) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "6",
-                level = "3"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (scoreCheck == 8) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "8",
-                level = "3"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
+        val db = Firebase.firestore
+        db.collection("users").document(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.d("test", "$document")
+                scoreCheckWork = document.getString("score")
+                wordToLearnProfessionLow = document.getString("wordToLearnProfessionLow")
+                wordToLearnProfessionMiddle = document.getString("wordToLearnProfessionMiddle")
+                wordToLearnProfessionHigh = document.getString("wordToLearnProfessionHigh")
+                learnedWords = document.getString("learnedWords")
+                wordToLearn = document.getString("wordToLearn")
+                val userDoc = com.flirex.verbum.modules.User(
+                    uid = currentUser?.uid,
+                    email = currentUser?.email,
+                    name = currentUser?.displayName,
+                    score = scoreCheckWork.toString(),
+                    level = "3",
+                    wordToLearnProfessionLow = wordToLearnProfessionLow.toString(),
+                    wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
+                    wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
+                    learnedWords = learnedWords.toString(),
+                    wordToLearn = wordToLearn.toString()
+                )
+                val washingtonRef = db.collection("users").document(currentUser!!.uid)
+                washingtonRef
+                    .set(userDoc)
+            }
         levelCheck = 3
         bnHigh2?.setVisibility(View.VISIBLE)
         bnHigh?.setVisibility(View.GONE)
@@ -251,42 +231,38 @@ class Settings : Activity() {
     fun onClickbnFour(view: View){
         auth = Firebase.auth
         val currentUser = auth.currentUser
-        if (levelCheck == 1) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "4",
-                level = "1"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (levelCheck == 2) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "4",
-                level = "2"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (levelCheck == 3) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "4",
-                level = "3"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
+        val db = Firebase.firestore
+        db.collection("users").document(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.d("test", "$document")
+                levelCheckWork = document.getString("level")
+                scoreCheckWork = document.getString("score")
+                wordToLearnProfessionLow = document.getString("wordToLearnProfessionLow")
+                wordToLearnProfessionMiddle = document.getString("wordToLearnProfessionMiddle")
+                wordToLearnProfessionHigh = document.getString("wordToLearnProfessionHigh")
+                learnedWords = document.getString("learnedWords")
+                wordToLearn = document.getString("wordToLearn")
+                if (wordToLearn == "4" && scoreCheckWork == "8") wordToLearn = "2"
+                if (wordToLearn == "3" && scoreCheckWork == "6") wordToLearn = "2"
+                if (wordToLearn == "8" && scoreCheckWork == "8") wordToLearn = "4"
+                if (wordToLearn == "6" && scoreCheckWork == "6") wordToLearn = "4"
+                val userDoc = com.flirex.verbum.modules.User(
+                    uid = currentUser?.uid,
+                    email = currentUser?.email,
+                    name = currentUser?.displayName,
+                    score = "4",
+                    level = levelCheckWork.toString(),
+                    wordToLearnProfessionLow = wordToLearnProfessionLow.toString(),
+                    wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
+                    wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
+                    learnedWords = learnedWords.toString(),
+                    wordToLearn = wordToLearn.toString()
+                )
+                val washingtonRef = db.collection("users").document(currentUser!!.uid)
+                washingtonRef
+                    .set(userDoc)
+            }
         scoreCheck = 4
         bnFour2?.setVisibility(View.VISIBLE)
         bnFour?.setVisibility(View.GONE)
@@ -296,42 +272,38 @@ class Settings : Activity() {
     fun onClickbnSix(view: View){
         auth = Firebase.auth
         val currentUser = auth.currentUser
-        if (levelCheck == 1) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "6",
-                level = "1"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (levelCheck == 2) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "6",
-                level = "2"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (levelCheck == 3) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "6",
-                level = "3"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
+        val db = Firebase.firestore
+        db.collection("users").document(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.d("test", "$document")
+                levelCheckWork = document.getString("level")
+                scoreCheckWork = document.getString("score")
+                wordToLearnProfessionLow = document.getString("wordToLearnProfessionLow")
+                wordToLearnProfessionMiddle = document.getString("wordToLearnProfessionMiddle")
+                wordToLearnProfessionHigh = document.getString("wordToLearnProfessionHigh")
+                learnedWords = document.getString("learnedWords")
+                wordToLearn = document.getString("wordToLearn")
+                if (wordToLearn == "2" && scoreCheckWork == "4") wordToLearn = "3"
+                if (wordToLearn == "4" && scoreCheckWork == "8") wordToLearn = "3"
+                if (wordToLearn == "4" && scoreCheckWork == "4") wordToLearn = "6"
+                if (wordToLearn == "8" && scoreCheckWork == "8") wordToLearn = "6"
+                val userDoc = com.flirex.verbum.modules.User(
+                    uid = currentUser?.uid,
+                    email = currentUser?.email,
+                    name = currentUser?.displayName,
+                    score = "6",
+                    level = levelCheckWork.toString(),
+                    wordToLearnProfessionLow = wordToLearnProfessionLow.toString(),
+                    wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
+                    wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
+                    learnedWords = learnedWords.toString(),
+                    wordToLearn = wordToLearn.toString()
+                )
+                val washingtonRef = db.collection("users").document(currentUser!!.uid)
+                washingtonRef
+                    .set(userDoc)
+            }
         scoreCheck = 6
         bnSix2?.setVisibility(View.VISIBLE)
         bnSix?.setVisibility(View.GONE)
@@ -341,42 +313,38 @@ class Settings : Activity() {
     fun onClickbnEight(view: View){
         auth = Firebase.auth
         val currentUser = auth.currentUser
-        if (levelCheck == 1) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "8",
-                level = "1"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (levelCheck == 2) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "8",
-                level = "2"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
-        if (levelCheck == 3) {
-            val userDoc = com.flirex.verbum.modules.User(
-                uid = currentUser?.uid,
-                email = currentUser?.email,
-                name = currentUser?.displayName,
-                score = "8",
-                level = "3"
-            )
-            val washingtonRef = db.collection("users").document(currentUser!!.uid)
-            washingtonRef
-                .set(userDoc)
-        }
+        val db = Firebase.firestore
+        db.collection("users").document(currentUser!!.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.d("test", "$document")
+                levelCheckWork = document.getString("level")
+                scoreCheckWork = document.getString("score")
+                wordToLearnProfessionLow = document.getString("wordToLearnProfessionLow")
+                wordToLearnProfessionMiddle = document.getString("wordToLearnProfessionMiddle")
+                wordToLearnProfessionHigh = document.getString("wordToLearnProfessionHigh")
+                learnedWords = document.getString("learnedWords")
+                wordToLearn = document.getString("wordToLearn")
+                if (wordToLearn == "2" && scoreCheckWork == "4") wordToLearn = "4"
+                if (wordToLearn == "3" && scoreCheckWork == "6") wordToLearn = "4"
+                if (wordToLearn == "4" && scoreCheckWork == "4") wordToLearn = "8"
+                if (wordToLearn == "6" && scoreCheckWork == "6") wordToLearn = "8"
+                val userDoc = com.flirex.verbum.modules.User(
+                    uid = currentUser?.uid,
+                    email = currentUser?.email,
+                    name = currentUser?.displayName,
+                    score = "8",
+                    level = levelCheckWork.toString(),
+                    wordToLearnProfessionLow = wordToLearnProfessionLow.toString(),
+                    wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
+                    wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
+                    learnedWords = learnedWords.toString(),
+                    wordToLearn = wordToLearn.toString()
+                )
+                val washingtonRef = db.collection("users").document(currentUser!!.uid)
+                washingtonRef
+                    .set(userDoc)
+            }
         scoreCheck = 8
         bnEigth2?.setVisibility(View.VISIBLE)
         bnEigth?.setVisibility(View.GONE)

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.flirex.verbum.R
@@ -16,48 +17,81 @@ import com.google.firebase.ktx.Firebase
 class Lesson : Activity() {
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
-    var bnStartLesson: Button?=null
-    var tvTextStartLesson: TextView?=null
-    var tvDefinitionNameLesson: TextView?=null
-    var definitionListCheck = 0
+    val definitionTipe = mutableListOf("profession","theatre")
+    var listSizeDefinition:Int = 5
+    var tipe:String = ""
+    var name:String = ""
+    var definitionList = mutableListOf("")
+    var definitionTipeList = mutableListOf("")
     var definition:String? = ""
-    var name:String?=""
-    var definition1:String? = ""
-    var definition2:String? = ""
-    var definition3:String? = ""
-    var definitiontipe:String? = ""
+    var kolvoWordsCheck:Int = 0
+    var tvDefinitionNameTest: TextView? = null
+    var tvDefinitionTextTest: TextView? = null
+    var bnStartDayLesson: TextView? = null
+    var tvStartDayLesson: TextView? = null
+    var bnInowTest: Button? = null
+    var bnIwantToLearn: Button? = null
+    private var level: String? = "0"
+    private var levelCheck: Int = 0
+    private var score: String? = "0"
+    private var scoreCheck: Int = 0
+    var randomDefinition: Int = 1
+    var editTextTextDefinition: EditText? = null
+    var bnCheckAnswerDayLesson: Button? = null
+    var bnNextDefinitionDayLesson: Button? = null
+    var tvDefinitionTextRemember: TextView? = null
+    var randomDefinitionCheck: Int = 1
+    var currentDefinition: String = ""
+    var lessonRememberCheck: Int = 0
+    var wordToLearnLow: String? = ""
+    var wordToLearnMiddle: String? = ""
+    var wordToLearnHigh: String? = ""
+    var wordToDeleteLow: String = ""
+    var wordToDeleteMiddle: String = ""
+    var wordToDeleteHigh: String =""
+    lateinit var wordToLearnLowList: List<String>
+    lateinit var wordToLearnMiddleList: List<String>
+    lateinit var wordToLearnHighList: List<String>
+    lateinit var wordToDeleteList: List<String>
+    var wordToLearn: String? = ""
+    var wordToLearnScore: String? = ""
+    var wordToLearnCheck: String? = ""
+    var learnedWordsCheck: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
-        bnStartLesson = findViewById(R.id.bnStartLesson)
-        tvTextStartLesson = findViewById(R.id.tvTextStartLesson)
+        tvDefinitionNameTest = findViewById(R.id.tvDefinitionNameTest)
+        tvDefinitionTextTest = findViewById(R.id.tvDefinitionTextTest)
+        bnInowTest = findViewById(R.id.bnInowTest)
+        bnIwantToLearn = findViewById(R.id.bnIwantToLearn)
+        bnStartDayLesson = findViewById(R.id.bnStartDayLesson)
+        bnStartDayLesson?.setVisibility(View.GONE)
+        tvStartDayLesson = findViewById(R.id.tvStartDayLesson)
+        tvStartDayLesson?.setVisibility(View.GONE)
+        bnCheckAnswerDayLesson= findViewById(R.id.bnCheckAnswerDayLesson)
+        bnCheckAnswerDayLesson?.setVisibility(View.GONE)
+        editTextTextDefinition = findViewById(R.id.editTextTextDefinition)
+        editTextTextDefinition?.setVisibility(View.GONE)
+        bnNextDefinitionDayLesson = findViewById(R.id.bnNextDefinitionDayLesson)
+        bnNextDefinitionDayLesson?.setVisibility(View.GONE)
+        tvDefinitionTextRemember = findViewById(R.id.tvDefinitionTextRemember)
+        tvDefinitionTextRemember?.setVisibility(View.GONE)
         auth = Firebase.auth
-        val currentUser = auth.currentUser
-        val db = Firebase.firestore
-        db.collection("active").document(currentUser!!.uid)
-            .get()
-            .addOnSuccessListener { document ->
-                if (document != null) {
-                    Log.d("test", "$document")
-                    try {
-                        definition1 = document.getString("definition1")
-                        definition2 = document.getString("definition2")
-                        definition3 = document.getString("definition3")
-                        definitiontipe = document.getString("definitiontipe")
-                        Log.d("test","$definition1")
-                        Log.d("test","$definition2")
-                        Log.d("test","$definition3")
-                        Log.d("test","$definitiontipe")
-                    } catch (e: Exception) {
-                        Log.d("test", "$e")
-                    }
-                }
-            }
     }
-    fun onClickStart(view:View){
-        bnStartLesson?.setVisibility(View.GONE)
-        tvTextStartLesson?.setVisibility(View.GONE)
+    fun onClickStartLesson(view:View){
         nextWord()
+    }
+    fun onClickNextWordLesson(view: View){
+
+    }
+    fun onClickCheckAnswer(view: View){
+
+    }
+    fun onClickInowTest(view: View){
+
+    }
+    fun onClickIwantToLearn(view: View){
+
     }
     fun nextWord(){
         /*db.collection(definitiontipe.toString()).document(definitionlevel.toString())

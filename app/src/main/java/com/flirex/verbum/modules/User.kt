@@ -6,5 +6,10 @@ data class User(
     val email: String? = null,
     val name: String? = null,
     val score: String = "",
-    var level: String = ""
+    var level: String = "",
+    var wordToLearnProfessionLow: String = "",
+    var wordToLearnProfessionMiddle: String = "",
+    var wordToLearnProfessionHigh: String = "",
+    var learnedWords: String = "",
+    var wordToLearn: String = ""
 )

@@ -60,12 +60,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
+        app:layout_constraintTop_toBottomOf="@+id/imStartDayLesson" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imStartDayLesson"
+        android:layout_width="262dp"
+        android:layout_height="129dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/every_day"
         android:onClick="onClickStartDayLesson"
@@ -127,16 +127,15 @@
         android:layout_height="72dp"
         android:fontFamily="Open Sens"
         android:onClick="onClickStartDayLesson"
-        android:text="бебра"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="22dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-        app:layout_constraintHorizontal_bias="0.17"
-        app:layout_constraintStart_toStartOf="@+id/imageButton3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton3"
-        app:layout_constraintVertical_bias="0.627"
+        app:layout_constraintBottom_toBottomOf="@+id/imStartDayLesson"
+        app:layout_constraintEnd_toEndOf="@+id/imStartDayLesson"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="@+id/imStartDayLesson"
+        app:layout_constraintTop_toTopOf="@+id/imStartDayLesson"
+        app:layout_constraintVertical_bias="0.596"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

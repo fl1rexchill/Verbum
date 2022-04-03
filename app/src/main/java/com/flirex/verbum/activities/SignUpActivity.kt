@@ -3,6 +3,7 @@ package com.flirex.verbum.activities
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -21,6 +22,7 @@ class SignUpActivity : Activity() {
 
     private lateinit var auth: FirebaseAuth
     private val store = Firebase.firestore
+    val db = Firebase.firestore
 
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -105,8 +107,27 @@ class SignUpActivity : Activity() {
                 email = currentUser.email,
                 name = currentUser.displayName,
                 score = "6",
-                level = "0"
+                level = "0",
+                wordToLearnProfessionLow = "Агроном Аналитик Архивариус Архитектор Астроном Бухгалтер",
+                wordToLearnProfessionMiddle = "Актуарий Аудитор Брокер Верстальщик Визажист Геофизик",
+                wordToLearnProfessionHigh = "Байер Брейдер Геодезист Имиджмейкер Копирайтер Лоббист",
+                learnedWords = "",
+                wordToLearn = "6"
             )
+
+            /*val user = hashMapOf(
+                "first" to "Ada",
+                "last" to "Lovelace",
+                "born" to 1815
+            )
+            db.collection(currentUser.uid)
+                .add(user)
+                .addOnSuccessListener { documentReference ->
+                    Log.d("test","$documentReference")
+                }
+                .addOnFailureListener { e ->
+                    Log.w("test", "Error adding document", e)
+                }*/
 
 //            save user document to firestore
             store.collection("users")

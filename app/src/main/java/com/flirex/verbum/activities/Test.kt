@@ -114,7 +114,12 @@ class Test : Activity() {
                     email = currentUser?.email,
                     name = currentUser?.displayName,
                     score = "6",
-                    level = "2"
+                    level = "2",
+                    wordToLearnProfessionLow = "Агроном Аналитик Архивариус Архитектор Астроном Бухгалтер",
+                    wordToLearnProfessionMiddle = "Актуарий Аудитор Брокер Верстальщик Визажист Геофизик",
+                    wordToLearnProfessionHigh = "Байер Брейдер Геодезист Имиджмейкер Копирайтер Лоббист",
+                    learnedWords = "",
+                    wordToLearn = "6"
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
@@ -126,7 +131,12 @@ class Test : Activity() {
                     email = currentUser?.email,
                     name = currentUser?.displayName,
                     score = "6",
-                    level = "3"
+                    level = "3",
+                    wordToLearnProfessionLow = "Агроном Аналитик Архивариус Архитектор Астроном Бухгалтер",
+                    wordToLearnProfessionMiddle = "Актуарий Аудитор Брокер Верстальщик Визажист Геофизик",
+                    wordToLearnProfessionHigh = "Байер Брейдер Геодезист Имиджмейкер Копирайтер Лоббист",
+                    learnedWords = "",
+                    wordToLearn = "6"
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
