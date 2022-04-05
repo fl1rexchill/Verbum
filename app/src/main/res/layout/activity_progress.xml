@@ -48,7 +48,7 @@
         android:layout_marginTop="16dp"
         android:text="Прогресс"
         android:textColor="#000000"
-        android:textSize="30dp"
+        android:textSize="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,4 +63,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivSettingsOnProgress"
         app:layout_constraintStart_toEndOf="@+id/ivTasks" />
+
+    <TextView
+        android:id="@+id/tvDefinitionsListProgress"
+        android:layout_width="368dp"
+        android:layout_height="574dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

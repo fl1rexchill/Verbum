@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-
 class DayLesson : Activity() {
     private lateinit var auth: FirebaseAuth
     val db = Firebase.firestore
@@ -59,9 +58,12 @@ class DayLesson : Activity() {
     var wordToLearnScore: String? = ""
     var wordToLearnCheck: String? = ""
     var learnedWordsCheck: String? = ""
+    var tvIdontnowDayLesson: TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_day_lesson)
+        tvIdontnowDayLesson = findViewById(R.id.tvIdontnowDayLesson)
+        tvIdontnowDayLesson?.setVisibility(View.GONE)
         tvDefinitionNameTest = findViewById(R.id.tvDefinitionNameTest)
         tvDefinitionTextTest = findViewById(R.id.tvDefinitionTextTest)
         bnInowTest = findViewById(R.id.bnInowTest)
@@ -372,6 +374,7 @@ class DayLesson : Activity() {
         tvDefinitionTextTest?.setVisibility(View.GONE)
         tvDefinitionTextRemember?.setVisibility(View.VISIBLE)
         tvDefinitionNameTest?.setVisibility(View.GONE)
+        tvIdontnowDayLesson?.setVisibility(View.VISIBLE)
         if (levelCheck == 1) {
             db.collection(definitionTipeList[randomDefinitionCheck]).document("low")
                 .get()
@@ -411,6 +414,9 @@ class DayLesson : Activity() {
                     }
                 }
         }
+    }
+    fun onClickIdontnowRememberPartDayLesson(view: View){
+        editTextTextDefinition?.setText(currentDefinition)
     }
     fun onClickCheckAnswer(view: View){
         if (lessonRememberCheck == scoreCheck/2-1) {
@@ -462,7 +468,8 @@ class DayLesson : Activity() {
                             wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                             wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                             learnedWords = learnedWordsCheck.toString(),
-                            wordToLearn = wordToLearnCheck.toString()
+                            wordToLearn = wordToLearnCheck.toString(),
+                            activeLesson = ""
                         )
                         val washingtonRef = db.collection("users").document(currentUser!!.uid)
                         washingtonRef
@@ -522,7 +529,8 @@ class DayLesson : Activity() {
                             wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                             wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                             learnedWords = learnedWordsCheck.toString(),
-                            wordToLearn = wordToLearnCheck.toString()
+                            wordToLearn = wordToLearnCheck.toString(),
+                            activeLesson = ""
                         )
                         val washingtonRef = db.collection("users").document(currentUser!!.uid)
                         washingtonRef
@@ -582,7 +590,8 @@ class DayLesson : Activity() {
                             wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                             wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                             learnedWords = learnedWordsCheck.toString(),
-                            wordToLearn = wordToLearnCheck.toString()
+                            wordToLearn = wordToLearnCheck.toString(),
+                            activeLesson = ""
                         )
                         val washingtonRef = db.collection("users").document(currentUser!!.uid)
                         washingtonRef

@@ -11,5 +11,6 @@ data class User(
     var wordToLearnProfessionMiddle: String = "",
     var wordToLearnProfessionHigh: String = "",
     var learnedWords: String = "",
-    var wordToLearn: String = ""
+    var wordToLearn: String = "",
+    var activeLesson: String = ""
 )

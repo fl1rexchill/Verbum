@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.flirex.verbum.R
+import com.flirex.verbum.modules.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -21,6 +22,13 @@ class Tasks : Activity() {
     var scoreCheck:String? = ""
     var priziv:String = ""
     var imStartDayLesson:ImageView? = null
+    var level:String? = ""
+    var wordToLearn:String? = ""
+    var learnedWordsCheck:String? = ""
+    var scoreCheckWork:String? = ""
+    var wordToLearnProfessionLow:String? = ""
+    var wordToLearnProfessionMiddle:String? = ""
+    var wordToLearnProfessionHigh:String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tasks)
@@ -81,9 +89,5 @@ class Tasks : Activity() {
         }
         startActivity(goDayLesson)
 
-    }
-    fun onClickStartLesson(view: View){
-        var goDayLesson = Intent(this, Lesson::class.java)
-        startActivity(goDayLesson)
     }
 }

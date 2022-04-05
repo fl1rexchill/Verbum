@@ -112,7 +112,8 @@ class SignUpActivity : Activity() {
                 wordToLearnProfessionMiddle = "Актуарий Аудитор Брокер Верстальщик Визажист Геофизик",
                 wordToLearnProfessionHigh = "Байер Брейдер Геодезист Имиджмейкер Копирайтер Лоббист",
                 learnedWords = "",
-                wordToLearn = "6"
+                wordToLearn = "6",
+                activeLesson = ""
             )
 
             /*val user = hashMapOf(

@@ -144,7 +144,8 @@ class Settings : Activity() {
                     wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                     wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                     learnedWords = learnedWords.toString(),
-                    wordToLearn = wordToLearn.toString()
+                    wordToLearn = wordToLearn.toString(),
+                    activeLesson = ""
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
@@ -180,7 +181,8 @@ class Settings : Activity() {
                     wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                     wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                     learnedWords = learnedWords.toString(),
-                    wordToLearn = wordToLearn.toString()
+                    wordToLearn = wordToLearn.toString(),
+                    activeLesson = ""
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
@@ -216,7 +218,8 @@ class Settings : Activity() {
                     wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                     wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                     learnedWords = learnedWords.toString(),
-                    wordToLearn = wordToLearn.toString()
+                    wordToLearn = wordToLearn.toString(),
+                    activeLesson = ""
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
@@ -257,7 +260,8 @@ class Settings : Activity() {
                     wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                     wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                     learnedWords = learnedWords.toString(),
-                    wordToLearn = wordToLearn.toString()
+                    wordToLearn = wordToLearn.toString(),
+                    activeLesson = ""
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
@@ -298,7 +302,8 @@ class Settings : Activity() {
                     wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                     wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                     learnedWords = learnedWords.toString(),
-                    wordToLearn = wordToLearn.toString()
+                    wordToLearn = wordToLearn.toString(),
+                    activeLesson = ""
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
@@ -339,7 +344,8 @@ class Settings : Activity() {
                     wordToLearnProfessionMiddle = wordToLearnProfessionMiddle.toString(),
                     wordToLearnProfessionHigh = wordToLearnProfessionHigh.toString(),
                     learnedWords = learnedWords.toString(),
-                    wordToLearn = wordToLearn.toString()
+                    wordToLearn = wordToLearn.toString(),
+                    activeLesson = ""
                 )
                 val washingtonRef = db.collection("users").document(currentUser!!.uid)
                 washingtonRef
