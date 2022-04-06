@@ -125,72 +125,92 @@ class DayLesson : Activity() {
         addWordToLesson()
     }
     fun onClickInowTest(view: View) {
-        if (levelCheck == 1) {
-            val rndName = (0..wordToLearnProfessionLowList.size).random()
-            name = wordToLearnProfessionLowList[rndName]
-            val rndTipe = (0..0).random()
-            tipe = definitionTipe[rndTipe]
-            addWordToLesson()
-        }
-        if (levelCheck == 2) {
-            val rndName = (0..wordToLearnProfessionMiddleList.size).random()
-            name = wordToLearnProfessionMiddleList[rndName]
-            val rndTipe = (0..0).random()
-            tipe = definitionTipe[rndTipe]
-            addWordToLesson()
-        }
-        if (levelCheck == 3) {
-            val rndName = (0..wordToLearnProfessionHighList.size).random()
-            name = wordToLearnProfessionHighList[rndName]
-            val rndTipe = (0..0).random()
-            tipe = definitionTipe[rndTipe]
-            addWordToLesson()
+        try {
+            if (levelCheck == 1) {
+                val rndName = (0..wordToLearnProfessionLowList.size).random()
+                name = wordToLearnProfessionLowList[rndName]
+                val rndTipe = (0..0).random()
+                tipe = definitionTipe[rndTipe]
+                addWordToLesson()
+            }
+            if (levelCheck == 2) {
+                val rndName = (0..wordToLearnProfessionMiddleList.size).random()
+                name = wordToLearnProfessionMiddleList[rndName]
+                val rndTipe = (0..0).random()
+                tipe = definitionTipe[rndTipe]
+                addWordToLesson()
+            }
+            if (levelCheck == 3) {
+                val rndName = (0..wordToLearnProfessionHighList.size).random()
+                name = wordToLearnProfessionHighList[rndName]
+                val rndTipe = (0..0).random()
+                tipe = definitionTipe[rndTipe]
+                addWordToLesson()
+            }
+        }catch (e:Exception){
+            Log.d("test","TEST $e")
         }
     }
 
     fun onClickIwantToLearn(view: View) {
-        if (kolvoWordsCheck == (scoreCheck/2+1)) {
-            definitionTipeList.add(tipe)
-            definitionList.add(name)
-            startLesson()
-            kolvoWordsCheck = 0
-            /*var goLesson = Intent(this, Lesson::class.java)
-            startActivity(goLesson)*/
-        }else {
-            if (levelCheck == 1) {
-                wordToDeleteProfessionLow = wordToDeleteProfessionLow + name + " "
-                definitionList.add(name)
-                val rndName = (0..wordToLearnProfessionLowList.size).random()
-                name = wordToLearnProfessionLowList[rndName]
-                definitionTipeList.add(tipe)
-                val rndTipe = (0..0).random()
-                tipe = definitionTipe[rndTipe]
-                addWordToLesson()
-                kolvoWordsCheck += 1
+
+            if (kolvoWordsCheck == (scoreCheck / 2 + 1)) {
+
+                    definitionTipeList.add(tipe)
+                    definitionList.add(name)
+                    startLesson()
+                    kolvoWordsCheck = 0
+
+            } else {
+
+                    if (levelCheck == 1) {
+                        wordToDeleteProfessionLow = wordToDeleteProfessionLow + name + " "
+                        definitionList.add(name)
+                        val rndName = (0..wordToLearnProfessionLowList.size-1).random()
+                        name = wordToLearnProfessionLowList[rndName]
+                        while (name in definitionList){
+                            val rndName = (0..wordToLearnProfessionLowList.size - 1).random()
+                            name = wordToLearnProfessionLowList[rndName]
+                        }
+                        definitionTipeList.add(tipe)
+                        val rndTipe = (0..0).random()
+                        tipe = definitionTipe[rndTipe]
+                        addWordToLesson()
+                        kolvoWordsCheck += 1
+                    }
+                    if (levelCheck == 2) {
+                        wordToDeleteProfessionMiddle = wordToDeleteProfessionMiddle + name + " "
+                        definitionList.add(name)
+                        val rndName = (0..wordToLearnProfessionMiddleList.size - 1).random()
+                        name = wordToLearnProfessionMiddleList[rndName]
+                        while (name in definitionList){
+                            val rndName = (0..wordToLearnProfessionMiddleList.size - 1).random()
+                            name = wordToLearnProfessionMiddleList[rndName]
+                        }
+                        definitionTipeList.add(tipe)
+                        val rndTipe = (0..0).random()
+                        tipe = definitionTipe[rndTipe]
+                        addWordToLesson()
+                        kolvoWordsCheck += 1
+                    }
+                    if (levelCheck == 3) {
+                        wordToDeleteProfessionHigh = wordToDeleteProfessionHigh + name + " "
+                        definitionList.add(name)
+                        val rndName = (0..wordToLearnProfessionHighList.size-1).random()
+                        name = wordToLearnProfessionHighList[rndName]
+                        while(name in definitionList){
+                            val rndName = (0..wordToLearnProfessionHighList.size-1).random()
+                            name = wordToLearnProfessionHighList[rndName]
+                        }
+                        definitionTipeList.add(tipe)
+                        val rndTipe = (0..0).random()
+                        tipe = definitionTipe[rndTipe]
+                        addWordToLesson()
+                        kolvoWordsCheck += 1
+                    }
+
             }
-            if (levelCheck == 2) {
-                wordToDeleteProfessionMiddle = wordToDeleteProfessionMiddle + name + " "
-                definitionList.add(name)
-                val rndName = (0..wordToLearnProfessionMiddleList.size).random()
-                name = wordToLearnProfessionMiddleList[rndName]
-                definitionTipeList.add(tipe)
-                val rndTipe = (0..0).random()
-                tipe = definitionTipe[rndTipe]
-                addWordToLesson()
-                kolvoWordsCheck += 1
-            }
-            if (levelCheck == 3) {
-                wordToDeleteProfessionHigh = wordToDeleteProfessionHigh + name + " "
-                definitionList.add(name)
-                val rndName = (0..wordToLearnProfessionHighList.size).random()
-                name = wordToLearnProfessionHighList[rndName]
-                definitionTipeList.add(tipe)
-                val rndTipe = (0..0).random()
-                tipe = definitionTipe[rndTipe]
-                addWordToLesson()
-                kolvoWordsCheck += 1
-            }
-        }
+
     }
     fun addWordToLesson() {
         //Log.d("test", "bebra2 $wordToLearnProfessionLowList")
